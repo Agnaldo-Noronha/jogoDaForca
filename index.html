@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="PT-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/telaAdd.css">
+    <link rel="stylesheet" href="css/telaJogo.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap" rel="stylesheet">    
+    <title>Jogo da Forca</title>
+</head>
+<body>
+    <header class="logo">
+        <img src="imagens/logo.png">
+    </header>
+
+    <main>
+        <section class="tela-inicial">
+            <div class="botoes">
+                <button class="comecar" onclick= 'mudaParaTelaJogo(1,2)'>Começar a jogar</button>
+        
+                <button class="addNovaPalavra" onclick='mudaParaTelaJogo(1,3)'>Adicionar nova palavra</button>
+            </div>
+        </section>        
+        
+        
+        <section class="tela-add">
+            <input type="text" class="inputNewP" placeholder="Digite uma palavra">
+            <p class="aviso">Máximo de oito caracteres</p>
+            <div class="botao-add">
+                <button class="salvar" onclick= 'mudaParaTelaJogo(3,2)'>Salvar e começar</button>
+                <button class="cancelar" onclick= 'mudaParaTelaJogo(3,1)'>Cancelar</button>
+            </div>
+        </section>
+        
+        
+        <section class="tela-jogo">
+
+            <div class="forca-imagens">
+                <img src="imagens/vazia.png">
+            </div>
+
+            <div class="resposta">
+                <canvas id="forca" height="80px" width="1200"></canvas>
+            </div>
+
+            <div class="letra-errada">
+
+            </div>
+
+            <div class="teclado">
+                <button class="letras">A</button>
+                <button class="letras">B</button>
+                <button class="letras">C</button>
+                <button class="letras">D</button>
+                <button class="letras">E</button>
+                <button class="letras">F</button>
+                <button class="letras">G</button>
+                <button class="letras">H</button>
+                <button class="letras">I</button>
+                <button class="letras">J</button>
+                <button class="letras">K</button>
+                <button class="letras">L</button>
+                <button class="letras">M</button>
+                <button class="letras">N</button>
+                <button class="letras">O</button>
+                <button class="letras">P</button>
+                <button class="letras">Q</button>
+                <button class="letras">R</button>
+                <button class="letras">S</button>
+                <button class="letras">T</button>
+                <button class="letras">U</button>
+                <button class="letras">V</button>
+                <button class="letras">W</button>
+                <button class="letras">X</button>
+                <button class="letras">Y</button>
+                <button class="letras">Z</button>
+
+            </div>
+    	    <br><br>
+            <div class="botoes-jogo">
+                <button class="novoJogo">Novo Jogo</button>
+                <button class="desistir" onclick= 'mudaParaTelaJogo(2,1)'>Desistir</button>
+            </div>
+
+
+        </section>
+        
+</main>
+
+<footer class="rodape">
+        <p>Copyright 2022 - by Agnaldo Noronha</p>
+        <div class="links">
+            <a href="https://www.linkedin.com/in/agnaldonoronha/" target="_blank"><img src="imagens/linkedin.png" ></a>
+            <a href="https://github.com/Agnaldo-Noronha" target="_blank"><img src="imagens/github.png"></a>
+        </div>        
+</footer>
+
+
+
+</body>
+<script src="javaScript/alternaDiv.js"></script>
+<script src="javaScript/logicaJogo.js"></script>
+<script src="javaScript/criaEspaco.js"></script>
+</html>

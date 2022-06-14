@@ -1,0 +1,79 @@
+.tela-add{
+    display: flex;
+    flex-direction: column;
+}
+
+.inputNewP{
+    width: 100%;
+    height: 100%;
+    border: none;
+    background-color: #b3e8e5;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bolder;
+    font-size: 150%;
+    border-radius: 15px;
+    text-align: center;
+    margin-bottom: 0.5%;    
+}
+
+.inputNewP::placeholder{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bolder;
+    font-size: 100%;
+    text-align: center;
+}
+
+.botao-add{
+    display: flex;
+    flex-direction: column;
+}
+
+.salvar{
+    margin-bottom: 5%;
+    background-color: #2F8F9D;
+    color: #ffffff;
+    width: 300px;
+    height: 70px;
+    border: none;
+    border-radius: 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    transition: 1s all;
+}
+
+.salvar:hover{
+    transform: scale(1.1);
+    background-color: #056b7a;
+}
+
+.cancelar{
+    background-color: #B3E8E5;
+    color: #000000;
+    width: 300px;
+    height: 70px;
+    border: none;
+    border-radius: 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    transition: 1s all;
+}
+
+.cancelar:hover{
+    transform: scale(1.1);
+    background-color: #d7ecf0;
+}
+
+.aviso{
+
+    margin-bottom: 8%;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.aviso::before{
+    content: "❕";
+}
+

@@ -1,0 +1,126 @@
+/* estilo do background animado*/
+
+body{
+    background: linear-gradient(90deg, #2F8F9D, #3BACB6, #82DBD8, #B3E8E5);
+    background-size: 300% 300%;
+    animation: colors 10s ease infinite;
+}
+
+@keyframes colors{
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+
+}
+
+/* estilizando a tela inicial*/
+
+body{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 20vh 60vh 20vh;
+}
+
+header{
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 2;
+}
+
+main{
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+footer{
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 3;
+    grid-row-end: 4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 4%;
+}
+
+.logo{
+    margin-left: 1%;
+    margin-top: 1%;
+}
+
+.botoes{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.comecar{
+    background-color: #2F8F9D;
+    color: #ffffff;
+    width: 300px;
+    height: 70px;
+    border: none;
+    border-radius: 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 6%;
+    transition: 1s all;
+}
+
+.comecar:hover{
+    transform: scale(1.1);
+    background-color: #056b7a;
+}
+
+.addNovaPalavra{
+    background-color: #B3E8E5;
+    color: #000000;
+    width: 300px;
+    height: 70px;
+    border: none;
+    border-radius: 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    transition: 1s all;
+}
+
+.addNovaPalavra:hover{
+    transform: scale(1.1);
+    background-color: #d7ecf0;
+}
+
+.links{
+    display: flex;
+    margin: 5px;
+}
+
+a{
+    margin: 5px;
+    transition: 1s all;
+}
+
+a:hover{
+    transform: rotate(360deg);
+}
+
+
+
