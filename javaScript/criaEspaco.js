@@ -48,9 +48,9 @@ function escreverLetraCorreta(letraC, index){
 
 // escrevendo as letras incorretas
 
-/*
 
-Não tenho certeza se usarei essa função
+
+/*Uma possibilidade de escrever a letra errada na tela
 
 function escreverLetraIncorreta(letra, espErro){
     tabuleiro.font = 'bold 25px Montserrat'
@@ -63,8 +63,37 @@ function escreverLetraIncorreta(letra, espErro){
 */
 
 
-// verificando se as letras estão certas ou erradas
 console.log(palavraAleat)
+
+/* outra possibilidade de escrever a letra errada na tela*/
+
+function desenhaLetraErrada(){
+    
+    var teclado = document.querySelector('.teclado');
+
+    teclado.addEventListener('click', function(event){
+
+        var letraClicada = (event.target.textContent);
+        var tentativas = 0;
+        
+        if(!(palavraAleat.includes(letraClicada))){
+            if(tentativas < 6){
+                var erros = document.querySelector('.letra-errada')
+                var btn = document.createElement('button')
+                btn.textContent = letraClicada
+                btn.classList.add('letraErrada') 
+                erros.appendChild(btn)
+                tentativas++;
+                return tentativas++
+            }            
+        }  
+    }) 
+         
+}
+
+// verificando se as letras estão certas
+
+
 function verificarLetraCorreta(){
 
     var teclado = document.querySelector('.teclado');
@@ -72,35 +101,23 @@ function verificarLetraCorreta(){
     teclado.addEventListener('click', function(event){
 
         var letraClicada = (event.target.textContent);
-
+                
         if (palavraAleat.includes(letraClicada)){
             var indices = [];
             var idx = palavraAleat.indexOf(letraClicada);
-
+    
                 while (idx != -1) {
                     indices.push(idx);
                     idx = palavraAleat.indexOf(letraClicada, idx + 1);
                 }
-
+    
                 for (var i = 0; i < indices.length; i++){
                     escreverLetraCorreta(letraClicada, indices[i]) 
                 }
-            event.target.disabled = true;
-        }
-
-// Se esse if retorna true, a letra clicada não está inclusa na palavar aleatoria, portanto devo contar 1 erro e escrever na tela essa letra errada. O máximo de erros é 6 
-
-                if(!(palavraAleat.includes(letraClicada))){
-                    var erros = document.querySelector('.letra-errada')
-                    var letraErro = letraClicada
-                    var btn = document.createElement('button')
-                    btn.textContent = letraErro
-                    btn.classList.add('letraErrada') 
-                    erros.appendChild(btn)
-                }    
-                
-      
-})
+                event.target.disabled = true;
+        } 
+    })
 }
 
 verificarLetraCorreta()
+desenhaLetraErrada()
