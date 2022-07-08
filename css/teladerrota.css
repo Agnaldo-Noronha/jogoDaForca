@@ -1,0 +1,25 @@
+.derrota{
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    flex-direction: column;
+    height: 100vh;
+    
+}
+
+.derrota p{
+    text-align: center;
+    margin-left: -58px;
+    margin-bottom: 2%;
+    font-family: 'Shadows Into Light', cursive;
+    color: black;
+    font-weight: bold;
+    font-size: 3em;
+}
+
+.derrota a{
+    text-decoration: none;
+    color: #000;
+    font-family: 'Shadows Into Light', cursive;
+    font-size: 1.5em;
+}

@@ -14,9 +14,15 @@ function mudaParaTelaJogo(telaAtual,proximaTela){
 
     let dNone, dBlock;
 
-    if(telaAtual == 1){
+    if(telaAtual == 1 && proximaTela == 3){
         dNone = telaInicial;
         dFlex = rodape;
+    }
+
+    else if(telaAtual == 1){
+        dNone = telaInicial;
+        dFlex = rodape;
+        iniciaJogo();
     }
     
     else if(telaAtual == 2){

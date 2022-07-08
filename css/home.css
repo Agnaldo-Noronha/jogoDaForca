@@ -116,6 +116,8 @@ footer{
 a{
     margin: 5px;
     transition: 1s all;
+    text-decoration: none;
+    color: #000;
 }
 
 a:hover{

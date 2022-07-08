@@ -1,12 +1,42 @@
+// ADD PALAVRAS
+let palavras = ['ALURA','DESAFIO','AGNALDO','MOUSE','TECLADO','JAVASCRIPT']
+function adicionarPalavra(){
+    let input = document.querySelector('.inputNewP').value;
+    palavras.push(input);
+    iniciaJogo();
+    mudaParaTelaJogo(3,2);
+}
+
+console.log(palavras)
+
+
+function iniciaJogo(){
 // seletores e variaveis
-var palavras = ['ALURA','DESAFIO','AGNALDO','MOUSE','TECLADO','JAVASCRIPT']
-var tabuleiro = document.getElementById('forca').getContext('2d')
+
+let tabuleiro = document.getElementById('forca').getContext('2d')
+let tentativas = 0;
+
+let vazia = document.querySelector('.vazia')
+let cabeca = document.querySelector('.cabeca')
+let corpo = document.querySelector('.corpo')
+let braco1 = document.querySelector('.braco1')
+let braco2 = document.querySelector('.braco2')
+let perna1 = document.querySelector('.perna1')
+let perna2 = document.querySelector('.perna2')
+vazia.style.display = 'block';
+cabeca.style.display = 'none';
+corpo.style.display = 'none';
+braco1.style.display = 'none';
+braco2.style.display = 'none';
+perna1.style.display = 'none';
+perna2.style.display = 'none';
+
 
 //Escolhendo palavra secreta
 
 function palavraAleatoria(){
 
-    var palavra = palavras[Math.floor(Math.random()*(palavras.length))];
+    let palavra = palavras[Math.floor(Math.random()*(palavras.length))];
     palavraAleat = palavra;
     return palavraAleat;
 }
@@ -19,9 +49,9 @@ function criarEspaco(){
     tabuleiro.lineJoin = "round"
     tabuleiro.strokeStyle = "#ffffff"
     tabuleiro.beginPath()
-    var eixo = 600/palavraAleat.length
+    let eixo = 600/palavraAleat.length
 
-    for (var i = 0; i < palavraAleat.length; i++){
+    for (let i = 0; i < palavraAleat.length; i++){
         tabuleiro.moveTo(300+(eixo*i),40)
         tabuleiro.lineTo(335+(eixo*i),40)
     }
@@ -40,7 +70,7 @@ function escreverLetraCorreta(letraC, index){
     tabuleiro.lineJoin = "round"
     tabuleiro.strokeStyle = "#ffffff"
  
-    var eixo = 600/palavraAleat.length
+    let eixo = 600/palavraAleat.length
 
     tabuleiro.fillText(letraC, 300+(eixo*index), 32)
     tabuleiro.stroke()
@@ -48,47 +78,31 @@ function escreverLetraCorreta(letraC, index){
 
 // escrevendo as letras incorretas
 
-
-
-/*Uma possibilidade de escrever a letra errada na tela
-
-function escreverLetraIncorreta(letra, espErro){
-    tabuleiro.font = 'bold 25px Montserrat'
-    tabuleiro.lineWidth = 6
-    tabuleiro.lineCap = "round"
-    tabuleiro.lineJoin = "round"
-    tabuleiro.strokeStyle = "red"
-    tabuleiro.fillText(letra, (400 + espErro),80,40)
-}
-*/
-
-
-console.log(palavraAleat)
-
-/* outra possibilidade de escrever a letra errada na tela*/
-
 function desenhaLetraErrada(){
     
-    var teclado = document.querySelector('.teclado');
+    let teclado = document.querySelector('.teclado');
 
     teclado.addEventListener('click', function(event){
 
-        var letraClicada = (event.target.textContent);
-        var tentativas = 0;
+        let letraClicada = (event.target.textContent);
         
-        if(!(palavraAleat.includes(letraClicada))){
-            if(tentativas < 6){
-                var erros = document.querySelector('.letra-errada')
-                var btn = document.createElement('button')
+        
+        if(!palavraAleat.includes(letraClicada)){
+            if(tentativas < 7){
+                let erros = document.querySelector('.letra-errada')
+                let btn = document.createElement('button')
                 btn.textContent = letraClicada
                 btn.classList.add('letraErrada') 
                 erros.appendChild(btn)
-                tentativas++;
-                return tentativas++
+                event.target.disabled = true;
+                tentativas++
+                desenhaForca(tentativas)
+                    if(tentativas == 7){
+                        window.location.href = 'derrota.html'
+                    }                
             }            
         }  
-    }) 
-         
+    })  
 }
 
 // verificando se as letras estão certas
@@ -96,28 +110,75 @@ function desenhaLetraErrada(){
 
 function verificarLetraCorreta(){
 
-    var teclado = document.querySelector('.teclado');
+    let teclado = document.querySelector('.teclado');
+
+    let acertos = 0
 
     teclado.addEventListener('click', function(event){
 
-        var letraClicada = (event.target.textContent);
+        let letraClicada = (event.target.textContent);
+        
                 
         if (palavraAleat.includes(letraClicada)){
-            var indices = [];
-            var idx = palavraAleat.indexOf(letraClicada);
+            let indices = [];
+            let idx = palavraAleat.indexOf(letraClicada);
     
                 while (idx != -1) {
                     indices.push(idx);
                     idx = palavraAleat.indexOf(letraClicada, idx + 1);
                 }
     
-                for (var i = 0; i < indices.length; i++){
-                    escreverLetraCorreta(letraClicada, indices[i]) 
+                for (let i = 0; i < indices.length; i++){
+                    escreverLetraCorreta(letraClicada, indices[i])
+                    acertos++
                 }
-                event.target.disabled = true;
-        } 
+            event.target.disabled = true;
+            
+        }
+
+        if(acertos == palavraAleat.length){
+            window.location.href = 'vitoria.html'            
+        }
     })
 }
 
 verificarLetraCorreta()
 desenhaLetraErrada()
+console.log(palavraAleat)
+
+// Desenhar a forca a cada erro
+
+function desenhaForca(tentativa){
+    switch (tentativa){
+        case 1:
+            vazia.style.display = 'none';
+            cabeca.style.display = 'block';
+            break;
+        case 2:
+            cabeca.style.display = 'none';
+            corpo.style.display = 'block';
+            break;
+        case 3:
+            corpo.style.display = 'none';
+            braco1.style.display = 'block';
+            break;
+        case 4:
+            braco1.style.display = 'none';
+            braco2.style.display = 'block';
+            break;
+        case 5:
+            braco2.style.display = 'none';
+            perna1.style.display = 'block';
+            break;
+        case 6:
+            perna1.style.display = 'none';
+            perna2.style.display = 'block';
+            break;
+    }
+}
+}
+
+
+
+
+
